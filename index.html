@@ -8,7 +8,27 @@
   </style>
 </head>
 <body>
-  <div id="echothread" data-shortname="detourau" data-api-key="LchQw-uwYhT6XYE2cRu7-xecwRoy8OK1FXrNQ3bqGCY"></div>
-  <script src="https://cdn.echothread.io/widget.js" async></script>
+  <div id="echothread-container"></div>
+
+  <script>
+    // Get the unique ID from the URL (e.g., ?id=chapter-1)
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageId = urlParams.get('id') || 'default-page';
+
+    // Create the EchoThread widget div dynamically with the unique data-identifier
+    const widgetDiv = document.createElement('div');
+    widgetDiv.id = 'echothread';
+    widgetDiv.setAttribute('data-shortname', 'detourau');
+    widgetDiv.setAttribute('data-api-key', 'LchQw-uwYhT6XYE2cRu7-xecwRoy8OK1FXrNQ3bqGCY');
+    widgetDiv.setAttribute('data-identifier', pageId);
+
+    document.getElementById('echothread-container').appendChild(widgetDiv);
+
+    // Dynamically load the EchoThread script
+    const script = document.createElement('script');
+    script.src = 'https://cdn.echothread.io/widget.js';
+    script.async = true;
+    document.body.appendChild(script);
+  </script>
 </body>
 </html>
